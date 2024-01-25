@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bibliothè | Area Riservata</title>
+	<link rel="icon" type="image/png" th:src="@{'/img/minilogo.png'}">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link th:href="@{/css/style.css}" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/GENERICO.js}"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
+	
+	<script>
+function getRandomColor() {
+    const colors = ["#EF7E6B", "#9AD0C3", "#FCDD98", "#F58247", "#98D4E1"];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const elementsToColor = document.querySelectorAll('.cambia-colore');
+    
+    elementsToColor.forEach(function (element) {
+        element.style.color = getRandomColor();
+    });
+});
+</script>
+
+</head>
+
+<body>
+	<div class="head">
+		<!--navbar-->
+		<div th:replace="~{fragments :: navbar(autori=${autori}, generi=${generi}, caseEditrici=${caseEditrici})}">
+		</div>
+	</div>
+	<!-- CORPO -->
+	<!-- Main container holds the
+		entire content -->
+		<div class="body">
+			<h1 id="riservata" class="text-center arancione">Area riservata</h1>
+			<div class="intro2">
+					 <h3 th:text="'Ciao ' + ${utente.nome} + ', ecco la tua area riservata!'"></h3>
+
+					<p style="font-size: 20px;">Qui potrai vedere i tuoi dati<br> e tutti i libri che hai prenotato e recensito</p>
+			</div>
+            <div class="row">
+              <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 bg-light pt-4 pb-4">
+                <div class="col-11 mx-auto sidebar">
+					<h2 class="roboto azzurro cambia-colore">Il tuo profilo</h2>
+                    <br>
+                    <p class="roboto" style="color: #737373;">Il tuo nome utente:</p>
+                    <p th:text="${utente.nome} +' '+ ${utente.cognome}"></p>
+                    <p  class="roboto" style="color: #737373;">La tua e-mail:</p>
+                    <p th:text="${utente.email}">Le tue prenotazioni</p>
+                    
+                    <form th:action="@{riservata/logout}" method="get" onsubmit="return logout()">
+                        <button type="submit" class="btn btn-secondary btn-rounded">Logout</button>
+                    </form>
+                </div>
+              </div>
+              <div class="col-xl-9 col-lg-9 xol-md-12 col-sm-12 pt-4 pb-4">
+                    <div class="col-11 mx-auto">
+				         <h2 class="roboto verde cambia-colore">Le tue prenotazioni</h2>
+				        <table class="table table-bordered" >
+				            <thead >
+				                <tr class="roboto">
+				                    <th style="color: #737373;">Titolo</th>
+				                    <th style="color: #737373;">Autore</th>
+				                    <th style="color: #737373;">Data Prenotazione</th>
+				                    <th style="color: #737373;">Data Restituzione</th>
+				                </tr>
+				            </thead>
+				            <tbody>
+				                <tr th:each="pr : ${prenotazioni}">
+				                    <td th:if="${prenotazioni == null}" colspan="5">Non hai mai prenotato libri</td>
+				                    <td>
+				                        <a th:text="${pr != null ? pr.dettaglioLibro.titolo : ''}"
+				                            th:href="@{/dettaglio(id=${pr.dettaglioLibro.id})}"></a>
+				                    </td>
+				                    <td
+				                        th:text="${pr != null ? pr.dettaglioLibro.autore.nomeAutore +' '+ pr.dettaglioLibro.autore.cognome : ''}">
+				                    </td>
+				                    <td th:text="${pr != null ? pr.dataPrenotazione : ''}"></td>
+				                    <td th:if="${pr != null && pr.dataRestituzione == null}">
+				                        <form th:action="@{'/riservata/restituisci'}" method="post" onsubmit="return restituisci()">
+				                            <input type="hidden" name="prenotazioneId" th:value="${pr.id}" />
+				                            <button type="submit" class="btn btn-success send btn-sm">Restituisci</button>                           
+				                        </form>
+				                    </td>
+				                    <td th:unless="${pr != null && pr.dataRestituzione == null}"
+				                        th:text="${pr != null ? pr.dataRestituzione : ''}"></td>
+				                </tr>
+				            </tbody>
+				        </table>
+				    </div>
+				      <div class="col-11 mx-auto">	
+						<h2 class="roboto giallo cambia-colore">Le tue recensioni</h2>			        
+				     
+				          <table class="table table-bordered">
+				             <thead>
+				                <tr class="roboto">
+				                   <th style="color: #737373;">Titolo</th>
+				                   <th style="color: #737373;">Autore</th>
+				                   <th style="color: #737373;">Valutazione</th>
+				                   <th style="color: #737373;">Commento</th>
+				                </tr>
+				             </thead>
+				                    <tbody>
+				                        <tr th:each="rec : ${recensioni}">
+				                            <td th:if="${recensioni == null}" colspan="4">Non hai mai lasciato recensioni</td>
+				                            <td>
+				                                <a th:text="${rec != null ? rec.dettaglioLibro.titolo : ''}"
+				                                    th:href="@{/dettaglio(id=${rec.dettaglioLibro.id})}"></a>
+				                            </td>
+				                            <td
+				                                th:text="${rec != null ? rec.dettaglioLibro.autore.nomeAutore + ' ' + rec.dettaglioLibro.autore.cognome : ''}">
+				                            </td>
+				                            <td th:text="${rec != null ? rec.ranked : ''}"></td>
+				                            <td th:text="${rec != null ? rec.commento : ''}"></td>
+				                        </tr>
+				                    </tbody>
+				                </table>
+				       
+				    </div>
+              	</div>
+            </div>
+          </div>
+	<!-- FOOTER -->
+	<div th:replace="~{fragments :: footer}"></div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

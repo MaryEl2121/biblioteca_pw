@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bibliothè | Chi siamo</title>
+	<link rel="icon" type="image/png" th:src="@{'/img/minilogo.png'}">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link th:href="@{/css/style.css}" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/GENERICO.js}"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Barrio&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	
+	<div class="container">
+		<div class="head">
+			<!--navbar-->
+        	<div th:replace="~{fragments :: navbar(autori=${autori}, generi=${generi}, caseEditrici=${caseEditrici})}"></div>
+		</div>
+		<!--BODY-->
+		<div class="bg-light">
+			<div class="container py-5">
+				<div class="row h-100 align-items-center py-5">
+					<div class="col-lg-6">
+						<h1 id="about">Chi siamo</h1>
+						<p class="lead text-muted mb-0">
+							Benvenuto su Bibliothè, il tuo luogo di libri e thè preferito! <br>
+							Esplora la nostra vasta selezione di libri prenotabili online e ritira le tue storie preferite nel nostro accogliente negozio. <br>
+							Assapora la freschezza e la varietà dei nostri thè, scelti con cura per soddisfare ogni tuo gusto.<br>
+							Bibliothè, dove la lettura e il thè si incontrano per creare esperienze indimenticabili!  
+						</p>
+					</div>
+					<div class="col-lg-6 d-none d-lg-block"><img th:src="@{'/img/noi.png'}" alt="" class="img-fluid about">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bg-white py-5">
+			<div class="container py-5">
+				
+				<div class="row align-items-center">
+					<div class="col-lg-5 px-5 mx-auto"><img id="noPadd2" th:src="@{'/img/novità3.png'}" alt=""
+							class="img-fluid about mb-4 mb-lg-0"></div>
+					<div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
+						<h2 class="font-weight-light blu">Portare novità</h2>
+						<p class="font-italic text-muted mb-4">
+							Esplora le ultime novità su biblioThè! <br>
+							Consulta il nostro sito regolarmente per rimanere aggiornato sugli ultimi libri appena usciti e disponibili nella nostra selezione. <br>
+							Scopri le ultime tendenze letterarie, segna i tuoi preferiti e prenota i tuoi nuovi compagni di lettura quando preferisci.
+						</p>
+					</div>
+				</div>
+				<div class="row align-items-center mb-5">
+					<div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
+						<h2 class="font-weight-light azzurro">La selezione di thè</h2>
+						<p class="font-italic text-muted mb-4">
+							 Scopri la nostra selezione di thè pregiati, appositamente scelti per offrirti freschezza e varietà senza pari.  <br>
+							 Ogni thè è stato attentamente selezionato per soddisfare i gusti più raffinati. <br>
+                             Esplora la nostra esclusiva collezione di thè, disponibile solo nel nostro negozio. <br>
+                             Ti aspettiamo con entusiasmo per farti vivere l'incredibile sinergia tra libri e thè.
+						</p>
+					</div>
+					<div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img id="noPadd" th:src="@{'/img/selezione2.png'}" alt="img"
+							class="img-fluid about mb-4 mb-lg-0"></div>
+				</div>
+			</div>	
+			<div id="cardContact" class="container mt-5 card shadow p-3 mb-5 rounded">
+        <div class="row">
+            
+            <!-- Colonna destra - Riepilogo dei contatti -->
+            <div class="col-md-6">
+                <div class="riepilogo">
+                    <h1 id="riepilogo" class="card-title">Contatti</h5>
+                    <p><a href="mailto:">info@bibliothe.it</a></p>
+                    <p><a href="tel:+3911122233344">+39 111 222 333 44</a></p>
+                    <p><a href="https://www.google.com/maps/place/Via+Jacopo+della+Quercia,+64,+00155+Roma+RM/@41.9203109,12.6027871,17z/data=!3m1!4b1!4m6!3m5!1s0x132f63446c358ee7:0x50d6619a2d02f9ba!8m2!3d41.9203069!4d12.605362!16s%2Fg%2F11h0yr8b8v?hl=it&entry=ttu" target="_blank">via Jacopo della Quercia, 64, Roma</a></p>
+				    <p>
+				        <a href="#" target="_blank" title="Instagram">
+				            <img th:src="@{'/img/instagram.png'}" style="margin-right: 20px;"></img>
+				        </a>
+				         <a href="#" target="_blank" title="Facebook">
+				            <img th:src="@{'/img/facebook.png'}" style="margin-right: 20px;"></img>
+				        </a>  
+				         <a href="#" target="_blank" title="Tiktok">
+				            <img th:src="@{'/img/tiktok.png'}" style="margin-right: 20px;" ></img>
+				        </a>                 
+				    </p>
+                </div>
+            </div>
+            <!-- Colonna sinistra - Form di contatto -->
+            <div class="col-md-6 ">
+                <iframe
+                        width="100%"
+                        height="400"
+                        frameborder="0"
+                        scrolling="no"
+                        marginheight="0"
+                        marginwidth="0"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3150.6369652082087!2d-122.08395748475895!3d37.42201697982624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e7c0acefc4d%3A0x2a99237540c249f6!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1643742989608!5m2!1sen!2sus"
+                        allowfullscreen
+                    ></iframe>
+                
+            </div>
+        </div>
+    </div>
+		</div>
+		<div class="bg-light py-5">
+			
+			<div class="container py-5">
+				<div class="row mb-4">
+					<div class="col-lg-10">
+						<h2 class="display-4">Il nostro team</h2>
+						<p class="font-italic text-muted">
+							Il nostro team unisce passione per libri, thè e programmazione!<br>
+							Amiamo la magia della lettura, i sapori unici dei thè e creare un'esperienza digitale coinvolgente. <br>
+							Unisciti a noi in questa avventura di creatività appassionata dietro bibliothè. <br>
+							Bibliothè, dove la passione crea esperienze uniche! 
+						</p>
+					</div>
+				</div>
+
+				<div class="row text-center">
+					<!-- Team item 1-->
+					<div class="col-xl-2 col-sm-6 mb-5">
+						<div class="bg-white rounded shadow-sm py-5 px-4"><img
+								th:src="@{'/img/mary.png'}" alt="" width="100"
+								class="img-fluid rounded-circle mb-3 shadow-sm">
+							<h5 class="mb-0"><a href="https://www.linkedin.com/in/maria-elena-marrocco-1105a2281/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">M. Elena<br>Marrocco </a></h5><span class="small text-uppercase text-muted">FRONTEND
+							</span>
+
+						</div>
+					</div>
+					<!-- End-->
+
+					<!-- Team item 2-->
+					<div class="col-xl-2 col-sm-6 mb-5">
+						<div class="bg-white rounded shadow-sm py-5 px-4"><img
+								th:src="@{'/img/sara.png'}" alt="" width="100"
+								class="img-fluid rounded-circle mb-3 shadow-sm">
+							<h5 class="mb-0"><a href="https://www.linkedin.com/in/sara-sgrigna-3aa0902a3/" target="_blank" >Sara<br>Sgrigna</a></h5><span class="small text-uppercase text-muted">FRONTEND</span>
+
+						</div>
+					</div>
+					<!-- End-->
+					<!-- Team item 3-->
+					<div class="col-xl-2 col-sm-6 mb-5">
+						<div class="bg-white rounded shadow-sm py-5 px-4"><img
+								th:src="@{'/img/jessica.png'}" alt="" width="100"
+								class="img-fluid rounded-circle mb-3 shadow-sm">
+							<h5 class="mb-0"><a href="https://www.linkedin.com/in/jessica-ruggeri-2552051a6/" target="_blank" >Jessica<br>Ruggeri</a></h5><span class="small text-uppercase text-muted">FRONTEND</span>
+
+						</div>
+					</div>
+					<!-- End-->
+
+					<!-- Team item 4-->
+					<div class="col-xl-2 col-sm-6 mb-5">
+						<div class="bg-white rounded shadow-sm py-5 px-4"><img
+								th:src="@{'/img/elisa.png'}" alt="" width="100"
+								class="img-fluid rounded-circle mb-3  shadow-sm">
+							<h5 class="mb-0"><a href="https://www.linkedin.com/in/elisa-colombi-67b37217b/" target="_blank" >Elisa<br>Colombi</a></h5><span class="small text-uppercase text-muted">BACKEND</span>
+
+						</div>
+					</div>
+					<!-- End-->
+
+					<!-- Team item 5-->
+					<div class="col-xl-2 col-sm-6 mb-5">
+						<div class="bg-white rounded shadow-sm py-5 px-4"><img
+								th:src="@{'/img/claudia.png'}" alt="" width="100"
+								class="img-fluid rounded-circle mb-3  shadow-sm">
+							<h5 class="mb-0"><a href="https://www.linkedin.com/in/claudia-vaiana-541723159/" target="_blank" >Claudia<br>Vaiana</a></h5><span class="small text-uppercase text-muted">BACKEND</span>
+
+						</div>
+					</div>
+					<!-- End-->
+
+					<!-- Team item 6-->
+					<div class="col-xl-2 col-sm-6 mb-5">
+						<div class="bg-white rounded shadow-sm py-5 px-4"><img
+								th:src="@{'/img/saraD.png'}" alt="" width="100"
+								class="img-fluid rounded-circle mb-3 shadow-sm">
+							<h5 class="mb-0"><a href="https://www.linkedin.com/in/sara-di-meo-64b7b92a5/" target="_blank" >Sara<br>Di Meo</a></h5><span class="small text-uppercase text-muted">DBA</span>
+						</div>
+					</div>
+					<!-- End-->
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!--FRAGMENT FOOTER-->
+<div th:replace="~{fragments :: footer}"></div>
+</body>
+</html>
